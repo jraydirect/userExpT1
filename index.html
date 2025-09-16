@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taniti Island - Discover Paradise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #007acc, #0056b3);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,122,204,0.7), rgba(0,86,179,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%2387CEEB" width="1200" height="600"/><circle fill="%23FFD700" cx="200" cy="150" r="80"/><path fill="%23228B22" d="M0,400 Q300,350 600,400 T1200,400 V600 H0 Z"/><path fill="%238B4513" d="M800,300 L900,500 L1000,300 Z"/></svg>') center/cover;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .search-bar {
+            background: white;
+            padding: 1rem;
+            border-radius: 50px;
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            outline: none;
+            color: #333;
+        }
+
+        .search-bar button {
+            background: #007acc;
+            color: white;
+            border: none;
+            padding: 0.5rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Featured Experiences */
+        .featured-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-image {
+            height: 200px;
+            background: linear-gradient(45deg, #87CEEB, #228B22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #007acc;
+        }
+
+        .card-content p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .card-price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: #007acc;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #007acc;
+            border: 2px solid #007acc;
+        }
+
+        .btn-secondary:hover {
+            background: #007acc;
+            color: white;
+        }
+
+        /* Quick Info Sidebar */
+        .info-section {
+            padding: 3rem 0;
+            background: white;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .testimonials {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .testimonial {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #007acc;
+        }
+
+        .testimonial .stars {
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-info {
+            background: #007acc;
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .info-item::before {
+            content: attr(data-icon);
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Activities Page Styles */
+        .page-content {
+            padding: 2rem 0;
+            min-height: 80vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .filters {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .activities-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+        }
+
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .activity-item {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .activity-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .activity-image {
+            width: 150px;
+            height: 120px;
+            background: linear-gradient(45deg, #87CEEB, #228B22);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .activity-info {
+            flex: 1;
+        }
+
+        .activity-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #007acc;
+        }
+
+        .activity-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .activity-description {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .activity-price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+
+        .activity-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .sidebar {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .category-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .category-item {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-item:hover, .category-item.active {
+            background: #007acc;
+            color: white;
+        }
+
+        .help-section {
+            background: #f0f8ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid #007acc;
+        }
+
+        .help-section h4 {
+            margin-bottom: 1rem;
+            color: #007acc;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-item {
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #007acc;
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.25rem;
+            }
+
+            .search-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .activities-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                order: -1;
+            }
+
+            .activity-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .activity-image {
+                width: 100%;
+                height: 150px;
+                align-self: center;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .filter-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        /* Hidden class for page switching */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Page-specific styles */
+        .page {
+            min-height: 80vh;
+        }
+
+        /* Booking form styles */
+        .booking-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #007acc;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #c3e6cb;
+            margin: 1rem 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo" onclick="showPage('home')">TANITI</a>
+                <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#" class="nav-link" onclick="showPage('plan')">PLAN YOUR VISIT</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('stay')">WHERE TO STAY</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('activities')">THINGS TO DO</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('dining')">DINING</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('about')">ABOUT TANITI</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Discover Paradise on Taniti Island</h1>
+                    <p>Experience pristine beaches, active volcanoes, and tropical rainforests</p>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Find Activities, Hotels, Restaurants..." id="searchInput">
+                        <button onclick="performSearch()">Search</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Experiences -->
+        <section class="featured-section">
+            <div class="container">
+                <h2 class="section-title">Featured Experiences</h2>
+                <div class="experience-grid">
+                    <div class="experience-card" onclick="showActivityDetails('volcano')">
+                        <div class="card-image">🌋</div>
+                        <div class="card-content">
+                            <h3>Active Volcano Tours</h3>
+                            <p>Experience the thrill of hiking near an active volcano with expert guides. Perfect for adventure seekers!</p>
+                            <div class="card-price">From $75 per person</div>
+                            <button class="btn" onclick="event.stopPropagation(); showBooking('volcano')">Book Tour</button>
+                        </div>
+                    </div>
+                    <div class="experience-card" onclick="showActivityDetails('zipline')">
+                        <div class="card-image">🌿</div>
+                        <div class="card-content">
+                            <h3>Rainforest Zip-line</h3>
+                            <p>Soar through the tropical canopy on our thrilling zip-line course. Family-friendly adventure!</p>
+                            <div class="card-price">From $65 per person</div>
+                            <button class="btn" onclick="event.stopPropagation(); showBooking('zipline')">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="experience-card" onclick="showActivityDetails('snorkeling')">
+                        <div class="card-image">🏖️</div>
+                        <div class="card-content">
+                            <h3>Beach Snorkeling</h3>
+                            <p>Explore underwater coral reefs in crystal-clear waters around Yellow Leaf Bay.</p>
+                            <div class="card-price">From $35 per person</div>
+                            <button class="btn" onclick="event.stopPropagation(); showBooking('snorkeling')">Book Experience</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="info-section">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="testimonials">
+                        <h3>What Visitors Say</h3>
+                        <div class="testimonial">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p>"Amazing volcano tour! The guides were knowledgeable and the views were breathtaking."</p>
+                            <strong>- Sarah M.</strong>
+                        </div>
+                        <div class="testimonial">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p>"Perfect family vacation. Activities for all ages and beautiful beaches."</p>
+                            <strong>- Mike T.</strong>
+                        </div>
+                        <div class="testimonial">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p>"Beautiful beaches and friendly locals made our honeymoon unforgettable."</p>
+                            <strong>- Emma K.</strong>
+                        </div>
+                    </div>
+                    <div class="quick-info">
+                        <h3>Quick Info</h3>
+                        <div class="info-item" data-icon="✈️">Daily flights available</div>
+                        <div class="info-item" data-icon="🛡️">Very safe destination</div>
+                        <div class="info-item" data-icon="💰">US Dollar accepted</div>
+                        <div class="info-item" data-icon="🗣️">English widely spoken</div>
+                        <div class="info-item" data-icon="🌡️">Perfect climate year-round</div>
+                        <button class="btn" style="margin-top: 1rem; width: 100%;" onclick="showPage('plan')">Travel Tips</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Activities Page -->
+    <div id="activities" class="page hidden">
+        <div class="container">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>Things to Do on Taniti</h1>
+                    <p>Discover amazing activities for all ages and interests</p>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label for="activityType">Activity Type:</label>
+                            <select id="activityType" onchange="filterActivities()">
+                                <option value="all">All Activities</option>
+                                <option value="beach">Beach</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="culture">Culture</option>
+                                <option value="family">Family</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="ageGroup">Age Group:</label>
+                            <select id="ageGroup" onchange="filterActivities()">
+                                <option value="all">All Ages</option>
+                                <option value="kids">Kids Friendly</option>
+                                <option value="teens">Teens</option>
+                                <option value="adults">Adults Only</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="sortBy">Sort By:</label>
+                            <select id="sortBy" onchange="filterActivities()">
+                                <option value="popularity">Popularity</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="rating">Rating</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activities-layout">
+                    <div class="activity-list" id="activityList">
+                        <!-- Activities will be populated by JavaScript -->
+                    </div>
+
+                    <div class="sidebar">
+                        <h3>Popular Categories</h3>
+                        <ul class="category-list">
+                            <li class="category-item active" data-category="all">
+                                <span>🌋 Volcano Tours</span>
+                                <span>(8)</span>
+                            </li>
+                            <li class="category-item" data-category="beach">
+                                <span>🏖️ Beach Activities</span>
+                                <span>(12)</span>
+                            </li>
+                            <li class="category-item" data-category="adventure">
+                                <span>🌿 Rainforest</span>
+                                <span>(6)</span>
+                            </li>
+                            <li class="category-item" data-category="culture">
+                                <span>🏛️ Cultural Sites</span>
+                                <span>(4)</span>
+                            </li>
+                            <li class="category-item" data-category="family">
+                                <span>🎣 Fishing Tours</span>
+                                <span>(5)</span>
+                            </li>
+                        </ul>
+
+                        <div class="help-section">
+                            <h4>📞 Need Help?</h4>
+                            <p><strong>Call Us:</strong><br>+1 (555) TANITI</p>
+                            <button class="btn" style="width: 100%; margin-top: 1rem;" onclick="alert('Chat feature coming soon!')">Chat with Agent</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plan Your Visit Page -->
+    <div id="plan" class="page hidden">
+        <div class="container">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>Plan Your Visit</h1>
+                    <p>Everything you need to know for your Taniti adventure</p>
+                </div>
+
+                <div class="info-grid">
+                    <div>
+                        <div class="experience-card" style="margin-bottom: 2rem;">
+                            <div class="card-image">✈️</div>
+                            <div class="card-content">
+                                <h3>Getting There</h3>
+                                <p><strong>By Air:</strong> Most visitors arrive via our small airport that accommodates small jets and propeller planes. Larger jets will be supported soon!</p>
+                                <p><strong>By Sea:</strong> A small cruise ship docks at Yellow Leaf Bay once per week.</p>
+                                <p><strong>Airport Expansion:</strong> Currently expanding to accommodate larger aircraft within the next few years.</p>
+                            </div>
+                        </div>
+
+                        <div class="experience-card" style="margin-bottom: 2rem;">
+                            <div class="card-image">🚌</div>
+                            <div class="card-content">
+                                <h3>Transportation</h3>
+                                <p><strong>Public Buses:</strong> Serve Taniti City from 5 AM to 11 PM daily</p>
+                                <p><strong>Private Buses:</strong> Service the rest of the island</p>
+                                <p><strong>Taxis:</strong> Available in Taniti City</p>
+                                <p><strong>Rental Cars:</strong> Available near the airport</p>
+                                <p><strong>Bikes:</strong> Rentals available (helmets required by law)</p>
+                            </div>
+                        </div>
+
+                        <div class="experience-card">
+                            <div class="card-image">🌤️</div>
+                            <div class="card-content">
+                                <h3>Weather & Best Time to Visit</h3>
+                                <p><strong>Climate:</strong> Tropical with warm temperatures year-round</p>
+                                <p><strong>Best Time:</strong> Great weather all year, but check for national holidays when attractions may be closed</p>
+                                <p><strong>What to Pack:</strong> Light clothing, sunscreen, comfortable walking shoes</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quick-info">
+                        <h3>Essential Travel Tips</h3>
+                        <div class="info-item" data-icon="⚡">Power outlets: 120 volts (US standard)</div>
+                        <div class="info-item" data-icon="🍺">Alcohol sales: 9 AM - Midnight</div>
+                        <div class="info-item" data-icon="🎂">Drinking age: 18 (not strictly enforced)</div>
+                        <div class="info-item" data-icon="🗣️">English widely spoken by younger locals</div>
+                        <div class="info-item" data-icon="🏥">One hospital with multilingual staff</div>
+                        <div class="info-item" data-icon="🔐">Very safe, minimal violent crime</div>
+                        <div class="info-item" data-icon="💳">US Dollar, Euro, and Yen accepted</div>
+                        <div class="info-item" data-icon="🏖️">Most attractions in walkable areas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Where to Stay Page -->
+    <div id="stay" class="page hidden">
+        <div class="container">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>Where to Stay</h1>
+                    <p>From budget hostels to luxury resorts - find your perfect accommodation</p>
+                </div>
+
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <div class="card-image">🏨</div>
+                        <div class="card-content">
+                            <h3>Hotels & Resorts</h3>
+                            <p>Choose from our four-star resort to comfortable family hotels. All accommodations are strictly regulated and regularly inspected.</p>
+                            <div class="card-price">From $120 per night</div>
+                            <button class="btn" onclick="showBooking('hotel')">Book Hotels</button>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <div class="card-image">🏠</div>
+                        <div class="card-content">
+                            <h3>Bed & Breakfasts</h3>
+                            <p>Stay with local families in growing number of charming B&Bs. Experience authentic Tanitian hospitality and home-cooked meals.</p>
+                            <div class="card-price">From $80 per night</div>
+                            <button class="btn" onclick="showBooking('bnb')">Book B&B</button>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <div class="card-image">🏖️</div>
+                        <div class="card-content">
+                            <h3>Vacation Rentals</h3>
+                            <p>Private homes and condos perfect for families and groups. Many located near Merriton Landing with easy beach access.</p>
+                            <div class="card-price">From $200 per night</div>
+                            <button class="btn" onclick="showBooking('rental')">Book Rental</button>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <div class="card-image">🎒</div>
+                        <div class="card-content">
+                            <h3>Budget Hostel</h3>
+                            <p>Affordable accommodation for budget travelers and backpackers. Clean, safe, and centrally located in Taniti City.</p>
+                            <div class="card-price">From $25 per night</div>
+                            <button class="btn" onclick="showBooking('hostel')">Book Hostel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dining Page -->
+    <div id="dining" class="page hidden">
+        <div class="container">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>Dining on Taniti</h1>
+                    <p>From fresh local fish to international cuisine</p>
+                </div>
+
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <div class="card-image">🐟</div>
+                        <div class="card-content">
+                            <h3>Local Fish & Rice Restaurants (5)</h3>
+                            <p>Experience authentic Tanitian cuisine featuring fresh daily catches and traditional rice dishes prepared by local families.</p>
+                            <div class="card-price">$15-25 per person</div>
+                            <button class="btn" onclick="alert('Restaurant directory coming soon!')">View Restaurants</button>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <div class="card-image">🍔</div>
+                        <div class="card-content">
+                            <h3>American-Style Dining (3)</h3>
+                            <p>Familiar flavors for international visitors. Burgers, steaks, and comfort food with island flair.</p>
+                            <div class="card-price">$20-35 per person</div>
+                            <button class="btn" onclick="alert('Restaurant directory coming soon!')">View Restaurants</button>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <div class="card-image">🍜</div>
+                        <div class="card-content">
+                            <h3>Pan-Asian Cuisine (2)</h3>
+                            <p>Delicious Asian fusion restaurants offering fresh noodles, stir-fries, and traditional dishes.</p>
+                            <div class="card-price">$18-30 per person</div>
+                            <button class="btn" onclick="alert('Restaurant directory coming soon!')">View Restaurants</button>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <div class="card-image">🍺</div>
+                        <div class="card-content">
+                            <h3>Pubs & Microbrewery</h3>
+                            <p>Local nightlife including our famous microbrewery and several traditional pubs. Perfect for evening entertainment.</p>
+                            <div class="card-price">$8-15 per drink</div>
+                            <button class="btn" onclick="alert('Pub guide coming soon!')">View Pubs</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card" style="margin-top: 2rem;">
+                    <div class="card-content">
+                        <h3>🛒 Grocery & Markets</h3>
+                        <p><strong>Supermarkets:</strong> Two full-service supermarkets for all your needs</p>
+                        <p><strong>Grocery Stores:</strong> Two smaller stores for quick shopping</p>
+                        <p><strong>24-Hour Convenience:</strong> One convenience store open around the clock</p>
+                        <p><strong>Local Markets:</strong> Fresh produce and local specialties</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Taniti Page -->
+    <div id="about" class="page hidden">
+        <div class="container">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>About Taniti Island</h1>
+                    <p>Discover the history, culture, and natural beauty of our tropical paradise</p>
+                </div>
+
+                <div class="info-grid">
+                    <div>
+                        <div class="experience-card" style="margin-bottom: 2rem;">
+                            <div class="card-image">🏝️</div>
+                            <div class="card-content">
+                                <h3>Island Geography</h3>
+                                <p><strong>Size:</strong> Less than 500 square miles</p>
+                                <p><strong>Terrain:</strong> Varied landscape including sandy and rocky beaches, lush tropical rainforests, and mountainous interior</p>
+                                <p><strong>Highlights:</strong> Active volcano, pristine beaches around Yellow Leaf Bay, dense rainforest, and safe natural harbor</p>
+                            </div>
+                        </div>
+
+                        <div class="experience-card" style="margin-bottom: 2rem;">
+                            <div class="card-image">👨‍👩‍👧‍👦</div>
+                            <div class="card-content">
+                                <h3>People & Culture</h3>
+                                <p><strong>Population:</strong> About 20,000 indigenous residents</p>
+                                <p><strong>Economy:</strong> Traditionally based on fishing and agriculture, now growing tourism sector</p>
+                                <p><strong>Language:</strong> Many younger Tanitians speak fluent English</p>
+                                <p><strong>Architecture:</strong> Native architecture throughout Taniti City</p>
+                            </div>
+                        </div>
+
+                        <div class="experience-card">
+                            <div class="card-image">🏛️</div>
+                            <div class="card-content">
+                                <h3>Attractions & Entertainment</h3>
+                                <p><strong>Cultural:</strong> Local history museum, art galleries, traditional architecture</p>
+                                <p><strong>Adventure:</strong> Helicopter rides, chartered fishing, hiking, zip-lining</p>
+                                <p><strong>Entertainment:</strong> Movie theater, arcade, bowling, dance club, nine-hole golf course (opening soon)</p>
+                                <p><strong>Development:</strong> Merriton Landing area rapidly developing with new activities</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quick-info">
+                        <h3>Quick Facts</h3>
+                        <div class="info-item" data-icon="📍">Pacific Ocean Location</div>
+                        <div class="info-item" data-icon="🌡️">Tropical Climate</div>
+                        <div class="info-item" data-icon="🌋">Active Volcano</div>
+                        <div class="info-item" data-icon="🏖️">White Sandy Beaches</div>
+                        <div class="info-item" data-icon="🌿">Tropical Rainforest</div>
+                        <div class="info-item" data-icon="⛵">Safe Natural Harbor</div>
+                        <div class="info-item" data-icon="🎭">Rich Local Culture</div>
+                        <div class="info-item" data-icon="🆘">Emergency: 911</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 2000; display: flex; align-items: center; justify-content: center;">
+        <div class="booking-form" style="max-width: 500px; margin: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2 id="bookingTitle">Book Your Experience</h2>
+                <button onclick="closeBooking()" style="background: none; border: none; font-size: 2rem; cursor: pointer;">&times;</button>
+            </div>
+            
+            <form id="bookingForm" onsubmit="submitBooking(event)">
+                <div class="form-group">
+                    <label for="bookingDate">Preferred Date:</label>
+                    <input type="date" id="bookingDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="partySize">Party Size:</label>
+                    <select id="partySize" required>
+                        <option value="">Select party size</option>
+                        <option value="1">1 person</option>
+                        <option value="2">2 people</option>
+                        <option value="3">3 people</option>
+                        <option value="4">4 people</option>
+                        <option value="5">5 people</option>
+                        <option value="6+">6+ people</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerName">Full Name:</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerEmail">Email:</label>
+                    <input type="email" id="customerEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerPhone">Phone Number:</label>
+                    <input type="tel" id="customerPhone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests (Optional):</label>
+                    <textarea id="specialRequests" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%; font-size: 1.2rem;">Complete Booking</button>
+            </form>
+            
+            <div id="bookingSuccess" class="success-message hidden">
+                <h3>Booking Confirmed! 🎉</h3>
+                <p>Thank you for booking with Taniti Tourism. We've sent confirmation details to your email.</p>
+                <p><strong>Booking Reference:</strong> <span id="bookingRef"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-item">📧 info@tanititourism.com</div>
+                <div class="footer-item">🚨 Emergency: 911</div>
+                <div class="footer-item">🚌 Airport Shuttle Available</div>
+                <div class="footer-item">📞 +1 (555) TANITI</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample activities data
+        const activities = [
+            {
+                id: 'volcano',
+                title: 'Volcano Hiking Tour',
+                category: 'adventure',
+                ageGroup: 'teens',
+                price: 75,
+                rating: 4.8,
+                duration: '4 hours',
+                maxAge: '12+',
+                description: 'Experience the thrill of hiking near an active volcano with expert guides. Learn about geological formations and enjoy spectacular views.',
+                icon: '🌋'
+            },
+            {
+                id: 'zipline',
+                title: 'Rainforest Zip-line Adventure',
+                category: 'adventure',
+                ageGroup: 'kids',
+                price: 65,
+                rating: 4.9,
+                duration: '3 hours',
+                maxAge: '8+',
+                description: 'Soar through the tropical canopy on our thrilling zip-line course. Multiple platforms offer different perspectives of the rainforest.',
+                icon: '🌿'
+            },
+            {
+                id: 'snorkeling',
+                title: 'Beach Snorkeling Experience',
+                category: 'beach',
+                ageGroup: 'all',
+                price: 35,
+                rating: 4.7,
+                duration: '2 hours',
+                maxAge: 'All Ages',
+                description: 'Explore underwater coral reefs in crystal-clear waters around Yellow Leaf Bay. Equipment and instruction included.',
+                icon: '🏖️'
+            },
+            {
+                id: 'fishing',
+                title: 'Chartered Fishing Tour',
+                category: 'family',
+                ageGroup: 'all',
+                price: 120,
+                rating: 4.6,
+                duration: '6 hours',
+                maxAge: 'All Ages',
+                description: 'Full-day fishing expedition with experienced local captains. All equipment provided, catch cleaning included.',
+                icon: '🎣'
+            },
+            {
+                id: 'museum',
+                title: 'Cultural History Museum',
+                category: 'culture',
+                ageGroup: 'all',
+                price: 15,
+                rating: 4.4,
+                duration: '2 hours',
+                maxAge: 'All Ages',
+                description: 'Discover the rich history and culture of Taniti Island through exhibits, artifacts, and interactive displays.',
+                icon: '🏛️'
+            },
+            {
+                id: 'helicopter',
+                title: 'Island Helicopter Tour',
+                category: 'adventure',
+                ageGroup: 'adults',
+                price: 200,
+                rating: 4.9,
+                duration: '1 hour',
+                maxAge: '16+',
+                description: 'Aerial tour showcasing the entire island including volcano, beaches, and rainforest from above.',
+                icon: '🚁'
+            }
+        ];
+
+        let currentBookingType = '';
+        
+        // Navigation functions
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.remove('hidden');
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Close mobile menu
+            document.getElementById('navMenu').classList.remove('active');
+            
+            // Populate activities if showing activities page
+            if (pageId === 'activities') {
+                displayActivities(activities);
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Search function
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            if (searchTerm.includes('volcano')) {
+                showPage('activities');
+                filterByCategory('adventure');
+            } else if (searchTerm.includes('hotel') || searchTerm.includes('stay')) {
+                showPage('stay');
+            } else if (searchTerm.includes('restaurant') || searchTerm.includes('food')) {
+                showPage('dining');
+            } else {
+                showPage('activities');
+            }
+        }
+
+        // Activities page functions
+        function displayActivities(activitiesToShow) {
+            const activityList = document.getElementById('activityList');
+            if (!activityList) return;
+            
+            activityList.innerHTML = activitiesToShow.map(activity => `
+                <div class="activity-item" data-category="${activity.category}" data-age="${activity.ageGroup}">
+                    <div class="activity-image">${activity.icon}</div>
+                    <div class="activity-info">
+                        <h3>${activity.title}</h3>
+                        <div class="activity-meta">
+                            <div class="meta-item">🔴 ${activity.category}</div>
+                            <div class="meta-item">⏱️ ${activity.duration}</div>
+                            <div class="meta-item">👥 ${activity.maxAge}</div>
+                            <div class="meta-item">⭐ ${activity.rating}</div>
+                        </div>
+                        <div class="activity-description">${activity.description}</div>
+                        <div class="activity-price">From ${activity.price} per person</div>
+                        <div class="activity-buttons">
+                            <button class="btn btn-secondary" onclick="showActivityDetails('${activity.id}')">View Details</button>
+                            <button class="btn" onclick="showBooking('${activity.id}')">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterActivities() {
+            const typeFilter = document.getElementById('activityType')?.value || 'all';
+            const ageFilter = document.getElementById('ageGroup')?.value || 'all';
+            const sortBy = document.getElementById('sortBy')?.value || 'popularity';
+            
+            let filtered = activities.filter(activity => {
+                const matchesType = typeFilter === 'all' || activity.category === typeFilter;
+                const matchesAge = ageFilter === 'all' || activity.ageGroup === ageFilter || activity.ageGroup === 'all';
+                return matchesType && matchesAge;
+            });
+            
+            // Sort activities
+            filtered.sort((a, b) => {
+                switch(sortBy) {
+                    case 'price-low': return a.price - b.price;
+                    case 'price-high': return b.price - a.price;
+                    case 'rating': return b.rating - a.rating;
+                    default: return b.rating - a.rating; // popularity
+                }
+            });
+            
+            displayActivities(filtered);
+        }
+
+        function filterByCategory(category) {
+            document.getElementById('activityType').value = category;
+            filterActivities();
+            
+            // Update category sidebar
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.category === category) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // Add click handlers for category items
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    if (category === 'all') {
+                        document.getElementById('activityType').value = 'all';
+                    } else {
+                        filterByCategory(category);
+                    }
+                });
+            });
+        });
+
+        // Booking functions
+        function showBooking(type) {
+            currentBookingType = type;
+            const activity = activities.find(a => a.id === type);
+            
+            let title = 'Book Your Experience';
+            if (activity) {
+                title = `Book ${activity.title}`;
+            } else if (type === 'hotel') {
+                title = 'Book Hotel Stay';
+            } else if (type === 'bnb') {
+                title = 'Book Bed & Breakfast';
+            } else if (type === 'rental') {
+                title = 'Book Vacation Rental';
+            } else if (type === 'hostel') {
+                title = 'Book Hostel Stay';
+            }
+            
+            document.getElementById('bookingTitle').textContent = title;
+            document.getElementById('bookingModal').classList.remove('hidden');
+            document.getElementById('bookingSuccess').classList.add('hidden');
+            document.getElementById('bookingForm').classList.remove('hidden');
+        }
+
+        function closeBooking() {
+            document.getElementById('bookingModal').classList.add('hidden');
+            document.getElementById('bookingForm').reset();
+        }
+
+        function submitBooking(event) {
+            event.preventDefault();
+            
+            // Generate booking reference
+            const bookingRef = 'TAN' + Math.random().toString(36).substr(2, 6).toUpperCase();
+            document.getElementById('bookingRef').textContent = bookingRef;
+            
+            // Hide form and show success message
+            document.getElementById('bookingForm').classList.add('hidden');
+            document.getElementById('bookingSuccess').classList.remove('hidden');
+            
+            // Auto-close after 5 seconds
+            setTimeout(() => {
+                closeBooking();
+            }, 5000);
+        }
+
+        function showActivityDetails(activityId) {
+            const activity = activities.find(a => a.id === activityId);
+            if (activity) {
+                alert(`${activity.title}\n\nDuration: ${activity.duration}\nAge Requirement: ${activity.maxAge}\nRating: ${activity.rating}/5\nPrice: ${activity.price} per person\n\n${activity.description}\n\nClick "Book Now" to make a reservation!`);
+            }
+        }
+
+        // Set minimum date for booking to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('bookingDate');
+            if (dateInput) {
+                dateInput.min = today;
+            }
+        });
+
+        // Initialize the page
+        showPage('home');
+    </script>
+</body>
+</html>
